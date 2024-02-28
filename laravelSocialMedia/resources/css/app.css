@@ -1,0 +1,26 @@
+.avatar {
+    width: 200px !important;
+    height: 200px !important;
+}
+
+.postsAvatar {
+    width: 30px;
+    height: 30px;
+    margin-right:10px;
+}
+ 
+.navbar .containerAvatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 900px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.postsAvatar img, .avatar img, .navbar .containerAvatar img {
+    height: 100% !important;
+}
+
+.imageHome, .imageHome img {
+    width: 100%;
+}
