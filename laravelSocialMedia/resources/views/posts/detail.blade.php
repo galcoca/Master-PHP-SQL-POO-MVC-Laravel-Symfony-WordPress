@@ -21,8 +21,10 @@
                                                     src="https://via.placeholder.com/500/500" alt="{{ $post->user->nick }}">
                                             @endif
                                         </div>
-                                        <strong>{{ $post->user->name . ' ' . $post->user->surname }}</strong>&nbsp;|
-                                        {{ \FormatTime::LongTimeFilter($post->created_at) }}
+                                        <a href="{{ route('user.profile', ['id' => $post->user->id]) }}">
+                                            <strong>{{ $post->user->name . ' ' . $post->user->surname }}</strong>&nbsp;|
+                                            {{ \FormatTime::LongTimeFilter($post->created_at) }}
+                                        </a>
                                     </div>
 
                                 </div>
@@ -62,10 +64,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="d-flex justify-content-end align-items-center fw-normal description">
-                                        <div class="likes">
-                                            <i class="bi bi-heart"></i>
-                                            {{ count($post->likes) }}
-                                        </div>
+                                        @include('includes.likes')
                                     </div>
                                 </div>
                             </div>
@@ -79,13 +78,15 @@
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="d-flex align-items-center fw-normal">
-                                                                <span class="datefrom me-1">
-                                                                    {{ \FormatTime::LongTimeFilter($comment->created_at) }}
-                                                                </span>
-                                                                |
-                                                                <span class="author ms-1">
-                                                                    {{ $comment->user->name . ' ' . $comment->user->surname . ': ' }}
-                                                                </span>
+                                                                <a href="{{ route('user.profile', ['id' => $post->user->id]) }}">
+                                                                    <span class="datefrom me-1">
+                                                                        {{ \FormatTime::LongTimeFilter($comment->created_at) }}
+                                                                    </span>
+                                                                    |
+                                                                    <span class="author ms-1">
+                                                                        {{ $comment->user->name . ' ' . $comment->user->surname . ': ' }}
+                                                                    </span>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                         <div class="card-body">

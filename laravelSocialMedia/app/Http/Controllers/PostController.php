@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Models\Comment;
+use App\Models\Like;
 
 class PostController extends Controller
 {
@@ -40,5 +41,13 @@ class PostController extends Controller
             return redirect()->route('post.detail',$id)->with(['success' => 'Comment created']);
         else
             return redirect()->route('post.detail',$id)->with(['error' => 'Unable to create the comment']);
+    }
+
+    public function liked(){
+        $user = \Auth::user();
+        $liked = Like::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(5);
+        return view('posts.liked', [
+            'liked' => $liked
+        ]);
     }
 }

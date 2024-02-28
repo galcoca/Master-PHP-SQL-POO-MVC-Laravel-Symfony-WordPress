@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -51,6 +51,14 @@ class UserController extends Controller
             return redirect()->route('user.config')->with(['success' => 'User has been updated']);
         else
            return redirect()->route('user.config')->with(['error' => 'Unable to update the user']);
+    }
+
+    public function profile($id) {
+        $user = User::find($id);
+
+        return view('user.profile', [
+            'user' => $user
+        ]);
     }
 
     public function getImage($filename) {

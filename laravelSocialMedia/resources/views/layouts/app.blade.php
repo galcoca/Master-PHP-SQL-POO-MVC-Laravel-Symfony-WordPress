@@ -16,6 +16,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -59,6 +60,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('image.create') }}">Upload Image</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('post.liked') }}">Liked</a>
+                            </li>
                             <li>
                                 <div class="containerAvatar">
                                     <img class="rounded-circle img-fluid" src="{{ route('user.avatar', ['filename' => Auth::user()->image]) }}" alt="{{ Auth::user()->nick }}">
@@ -71,10 +75,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                    <a class="dropdown-item" href="{{ route('user.profile', ['id'=>Auth::user()->id]) }}">
                                         Profile
                                     </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}">
+                                    <a class="dropdown-item" href="{{ route('user.update') }}">
                                         Settings
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

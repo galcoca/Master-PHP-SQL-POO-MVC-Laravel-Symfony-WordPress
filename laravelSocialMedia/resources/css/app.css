@@ -24,3 +24,7 @@
 .imageHome, .imageHome img {
     width: 100%;
 }
+
+.liked {
+    color:red;
+}
